@@ -1,0 +1,42 @@
+import re
+
+file = open("D:\\Automata\\Python_RE_File.txt", "r")
+ 
+record=file.read()
+print(record)
+#Date
+date=re.findall(r"\d+rd\s[A-Za-z]+",record)   # \s for space
+print(date)
+#Email
+email=re.findall(r"\w+@[a-z]+.[a-z]+[.][a-z]+",record) # \w is for a-b or A-B  0-9 or _
+#email1=re.findall(r"\b.pk",record)
+print(email)
+start=re.findall(r"\AIt",record) 
+print(start)
+# end=re.findall(r"April\Z",record) 
+# print(end)
+#phone Number
+phone_no=re.findall(r"[+][0-9]{12}",record)
+print(phone_no)
+#creditcard number
+creditcard_number=re.findall(r"[0-9]{16}",record)
+print(creditcard_number)
+#Time
+time=re.findall(r"[0-9]:[0-9]{2}\s[A-Z]{2}",record)
+print(time)
+#MOney
+Money=re.findall(r"PKR\s[0-9]+\W[0-9]+",record)
+#address
+address=re.findall(r"\w+[#]+[-0123456789,' 'a-zA-Z]+",record)
+print(address)
+#interrogative Setence
+interrogative_Setence=re.findall(r"[' 'a-zA-Z]+\b[?]",record)
+print(interrogative_Setence)
+#Age
+print("There is no age mention in paragraph")
+#Names
+name=re.findall(r"Am[a-zA-Z]+|Ah[a-zA-Z]+|Sad[a-zA-Z]+|Je[a-zA-Z]+",record)
+print(name)
+#Elimination method to find RE is in Picture that are attached with this mail
+#RE=aa*b(b+aa*b)* + bb*a(a+bb*a)*
+RE=re.findall(r"[a][a]*[b]+|[aa*b]+|[b][b]*[a]+|[bb*a]+",dfa)
